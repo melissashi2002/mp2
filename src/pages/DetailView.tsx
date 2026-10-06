@@ -72,7 +72,7 @@ export default function DetailView() {
   return (
     <section className={styles.page}>
       <div className={styles.topBar}>
-        <button type="button" className={styles.backLink} onClick={() => navigate(-1)}>
+        <button type="button" className={styles.backLink} onClick={() => (location.key === 'default' ? navigate('/') : navigate(-1))}>
           ← Back
         </button>
         <span className={styles.position}>
