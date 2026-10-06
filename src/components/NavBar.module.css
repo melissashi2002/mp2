@@ -1,0 +1,80 @@
+.header {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.ball {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: linear-gradient(#fff 0 0) center / 100% 3px no-repeat,
+    linear-gradient(to bottom, var(--brand-dark) 50%, #fff 50%);
+  position: relative;
+}
+
+.ball::after {
+  content: '';
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--brand-dark);
+}
+
+.nav {
+  display: flex;
+  gap: 4px;
+}
+
+.link {
+  color: rgb(255 255 255 / 0.85);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.link:hover {
+  background: rgb(255 255 255 / 0.15);
+  color: #fff;
+}
+
+.active {
+  background: #fff;
+  color: var(--brand);
+}
+
+.active:hover {
+  background: #fff;
+  color: var(--brand);
+}

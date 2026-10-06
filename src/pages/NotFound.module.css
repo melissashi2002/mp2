@@ -1,0 +1,9 @@
+.page {
+  padding: 80px 16px;
+  text-align: center;
+}
+
+.page a {
+  color: var(--brand);
+  font-weight: 600;
+}

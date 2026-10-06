@@ -1,0 +1,169 @@
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.title {
+  margin: 0 0 20px;
+  font-size: 1.75rem;
+}
+
+.filters {
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.filterHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.filterLabel {
+  font-weight: 700;
+}
+
+.modeGroup {
+  display: flex;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.modeBtn {
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  background: var(--bg);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.modeActive {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.clear {
+  margin-left: auto;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  background: none;
+  color: var(--brand);
+  cursor: pointer;
+}
+
+.clear:hover {
+  text-decoration: underline;
+}
+
+.typeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.count {
+  margin: 20px 0 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.empty {
+  padding: 48px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.15);
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+.art {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: var(--border);
+}
+
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s;
+  filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.2));
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 14px 14px;
+}
+
+.id {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.name {
+  font-weight: 700;
+}
+
+/* Soft background tinted by the Pokémon's primary type */
+.normal { background: #a8a77a33; }
+.fire { background: #ee813033; }
+.water { background: #6390f033; }
+.electric { background: #f7d02c33; }
+.grass { background: #7ac74c33; }
+.ice { background: #96d9d633; }
+.fighting { background: #c22e2833; }
+.poison { background: #a33ea133; }
+.ground { background: #e2bf6533; }
+.flying { background: #a98ff333; }
+.psychic { background: #f9558733; }
+.bug { background: #a6b91a33; }
+.rock { background: #b6a13633; }
+.ghost { background: #73579733; }
+.dragon { background: #6f35fc33; }
+.dark { background: #70574633; }
+.steel { background: #b7b7ce33; }
+.fairy { background: #d685ad33; }
