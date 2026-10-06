@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import StatusMessage from '../components/StatusMessage';
 import TypeBadge from '../components/TypeBadge';
@@ -28,7 +28,9 @@ export default function ListView() {
   const { pokemon, loading, error, retry } = usePokemon();
   // Keep the controls in the URL so they survive a trip to the detail page and back.
   const [params, setParams] = useSearchParams();
-  const query = params.get('q') ?? '';
+  // The input reads from local state: URL updates run in a transition and lag
+  // behind fast typing, which would drop keystrokes if bound directly.
+  const [query, setQuery] = useState(() => params.get('q') ?? '');
   const sortParam = params.get('sort');
   const sortKey: SortKey = isSortKey(sortParam) ? sortParam : 'id';
   const order: SortOrder = params.get('order') === 'desc' ? 'desc' : 'asc';
@@ -68,7 +70,10 @@ export default function ListView() {
           className={styles.search}
           placeholder="Search by name or number…"
           value={query}
-          onChange={(e) => updateParam('q', e.target.value, '')}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            updateParam('q', e.target.value, '');
+          }}
           aria-label="Search Pokémon"
         />
         <label className={styles.sortLabel}>
