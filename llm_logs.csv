@@ -1,0 +1,30 @@
+turn,date,role,message,files,code_excerpt
+1,2026-10-04,user,Asked Claude to read the README and explain what to do.,,
+2,2026-10-04,assistant,Summarized the MP2 requirements and the setup and submission steps.,,
+3,2026-10-04,user,Asked what kind of app to build and for API recommendations.,,
+4,2026-10-04,assistant,Compared several APIs and recommended PokeAPI.,,
+5,2026-10-04,user,Asked whether the assignment requires an API key.,,
+6,2026-10-04,assistant,Explained that an API key is not required and PokeAPI needs none.,,
+7,2026-10-04,user,Chose PokeAPI and asked Claude to build the app.,,
+8,2026-10-04,assistant,"Scaffolded the Vite React TypeScript project, installed react-router-dom, axios and normalize.css, and configured GitHub Pages.",vite.config.ts; package.json; index.html,"base: '/mp2/',
+""build"": ""tsc -b && vite build && cp dist/index.html dist/404.html"""
+9,2026-10-04,assistant,Wrote the Axios client. It fetches the first 151 Pokemon in batches of 30 and caches them in sessionStorage.,src/api/pokeapi.ts; src/types.ts,"const client = axios.create({ baseURL: 'https://pokeapi.co/api/v2', timeout: 15000 });
+const responses = await Promise.all(
+  batch.map((p) => client.get<PokemonResponse>(`/pokemon/${p.name}`)),
+);"
+10,2026-10-04,assistant,"Added a React context so all pages share the loaded data, loading state and error state.",src/context/PokemonContext.tsx; src/context/pokemonContextValue.ts; src/context/usePokemon.ts,export const PokemonContext = createContext<PokemonContextValue | null>(null);
+11,2026-10-04,assistant,Set up routes with React Router.,src/App.tsx,"<BrowserRouter basename={import.meta.env.BASE_URL}>
+  <Route path=""/"" element={<ListView />} />
+  <Route path=""/gallery"" element={<GalleryView />} />
+  <Route path=""/pokemon/:id"" element={<DetailView />} />"
+12,2026-10-04,assistant,Built the list view with search as you type and sorting by 5 properties in ascending or descending order.,src/pages/ListView.tsx; src/pages/ListView.module.css,"function compare(a: Pokemon, b: Pokemon, key: SortKey): number {
+  if (key === 'name') return a.name.localeCompare(b.name);
+  return a[key] - b[key] || a.id - b.id;
+}"
+13,2026-10-04,assistant,Built the gallery view with multi-select type filters and an any/all match toggle.,src/pages/GalleryView.tsx; src/pages/GalleryView.module.css,"mode === 'all'
+  ? selected.every((t) => p.types.includes(t))
+  : selected.some((t) => p.types.includes(t))"
+14,2026-10-04,assistant,Built the detail view. Previous and next cycle through the list the user came from and wrap around at the ends.,src/pages/DetailView.tsx; src/pages/DetailView.module.css,"const ids = stateIds?.includes(currentId) ? stateIds : pokemon.map((p) => p.id);
+const prevId = ids[(index - 1 + ids.length) % ids.length];
+const nextId = ids[(index + 1) % ids.length];"
+15,2026-10-04,assistant,Added shared components and global styles. Stat bars use <meter> so there is no inline styling.,src/components/NavBar.tsx; src/components/TypeBadge.tsx; src/components/StatusMessage.tsx; src/index.css; src/pages/NotFound.tsx,<meter className={styles.meter} min={0} max={255} value={s.value} />
